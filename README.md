@@ -118,4 +118,4 @@ Hustlers
 India Innovates
 
 ## 📽️ Demo
-https://geo-sanket.vercel.app/
+https://geosanket.vercel.app/
