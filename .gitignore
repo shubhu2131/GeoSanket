@@ -1,0 +1,144 @@
+# ----------------------
+# OS generated files
+# ----------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+*.swp
+*.swo
+
+# ----------------------
+# Logs
+# ----------------------
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ----------------------
+# Environment variables / secrets
+# ----------------------
+.env
+.env.*
+*.env
+*.local
+
+# ----------------------
+# Dependency directories
+# ----------------------
+node_modules/
+vendor/
+packages/
+
+# ----------------------
+# Build / distribution folders
+# ----------------------
+dist/
+build/
+out/
+target/
+release/
+debug/
+
+# ----------------------
+# Cache folders
+# ----------------------
+.cache/
+.tmp/
+.temp/
+coverage/
+
+# ----------------------
+# IDE / Editor folders
+# ----------------------
+.vscode/
+.idea/
+*.iml
+*.sublime-project
+*.sublime-workspace
+
+# ----------------------
+# Python
+# ----------------------
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pytest_cache/
+.venv/
+venv/
+env/
+
+# ----------------------
+# Java
+# ----------------------
+*.class
+*.jar
+*.war
+*.ear
+
+# ----------------------
+# C / C++
+# ----------------------
+*.o
+*.obj
+*.exe
+*.out
+*.app
+
+# ----------------------
+# Rust
+# ----------------------
+target/
+Cargo.lock
+
+# ----------------------
+# Go
+# ----------------------
+bin/
+
+# ----------------------
+# macOS
+# ----------------------
+.AppleDouble
+.LSOverride
+
+# ----------------------
+# Windows
+# ----------------------
+*.dll
+*.exe
+
+# ----------------------
+# Docker
+# ----------------------
+.dockerignore
+
+# ----------------------
+# Terraform
+# ----------------------
+.terraform/
+*.tfstate
+*.tfstate.*
+
+# ----------------------
+# Database
+# ----------------------
+*.sqlite
+*.db
+
+# ----------------------
+# Backup files
+# ----------------------
+*.bak
+*.backup
+*.old
+.vercel
+
+
+node_modules/
+.env
+firebase-service-account.json
