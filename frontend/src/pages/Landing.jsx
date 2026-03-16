@@ -189,7 +189,7 @@ export default function Landing() {
         <div style={{ fontFamily: 'Syne,sans-serif', fontWeight: 800, fontSize: 22, marginBottom: 8 }}>Geo<span style={{ color: '#a855f7' }}>Sanket</span></div>
         <div style={{ fontSize: 13, color: '#64748b', marginBottom: 20 }}>Hyper-Local Civic Awareness Engine · India Innovates 2026 · MCD</div>
         <div style={{ display: 'flex', gap: 10, justifyContent: 'center', flexWrap: 'wrap' }}>
-          {['Team GeoSanket', 'India Innovates 2026', 'Municipal Corporation of Delhi'].map(t => (
+          {['Team Hustlers', 'India Innovates 2026', 'Municipal Corporation of Delhi'].map(t => (
             <span key={t} style={{ fontSize: 11, color: '#64748b', border: '1px solid #1a1a2e', padding: '4px 12px', borderRadius: 20 }}>{t}</span>
           ))}
         </div>
