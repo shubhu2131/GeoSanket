@@ -3,10 +3,10 @@ import { Toaster } from 'react-hot-toast'
 import { AuthProvider, useAuth } from './context/AuthContext'
 import { SocketProvider } from './context/SocketContext'
 
-// Landing
 import Landing from './pages/Landing'
+import CitizenLogin from './pages/CitizenLogin'
+import CitizenDashboard from './pages/CitizenDashboard'
 
-// Admin
 import Login from './pages/admin/Login'
 import Layout from './components/Layout'
 import Dashboard from './pages/admin/Dashboard'
@@ -16,30 +16,45 @@ import Projects from './pages/admin/Projects'
 import Analytics from './pages/admin/Analytics'
 import Users from './pages/admin/Users'
 
-const PrivateRoute = ({ children }) => {
+const AdminRoute = ({ children }) => {
+  const { isAuth, user } = useAuth()
+  if (!isAuth) return <Navigate to="/admin/login" replace />
+  if (user?.role !== 'admin') return <Navigate to="/citizen" replace />
+  return children
+}
+
+const CitizenRoute = ({ children }) => {
   const { isAuth } = useAuth()
-  return isAuth ? children : <Navigate to="/admin/login" replace />
+  return isAuth ? children : <Navigate to="/login" replace />
 }
 
 export default function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
-        <Toaster position="top-right" toastOptions={{
-          style: { background: '#0d0d1e', color: '#fff', border: '1px solid #1a1a2e' }
-        }} />
+        <Toaster
+          position="top-right"
+          toastOptions={{
+            style: { background: '#0d0d1e', color: '#fff', border: '1px solid #1a1a2e', fontSize: 13 },
+            success: { iconTheme: { primary: '#22c55e', secondary: '#0d0d1e' } },
+            error: { iconTheme: { primary: '#ef4444', secondary: '#0d0d1e' } },
+            duration: 4000,
+          }}
+        />
         <Routes>
-          {/* Public landing page */}
+          {/* Public */}
           <Route path="/" element={<Landing />} />
+          <Route path="/login" element={<CitizenLogin />} />
+          <Route path="/admin/login" element={<Login />} />
+
+          {/* Citizen */}
+          <Route path="/citizen" element={<CitizenRoute><CitizenDashboard /></CitizenRoute>} />
 
           {/* Admin */}
-          <Route path="/admin/login" element={<Login />} />
           <Route path="/admin" element={
-            <PrivateRoute>
-              <SocketProvider>
-                <Layout />
-              </SocketProvider>
-            </PrivateRoute>
+            <AdminRoute>
+              <SocketProvider><Layout /></SocketProvider>
+            </AdminRoute>
           }>
             <Route index element={<Navigate to="/admin/dashboard" replace />} />
             <Route path="dashboard" element={<Dashboard />} />
