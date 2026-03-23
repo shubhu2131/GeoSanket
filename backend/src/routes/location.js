@@ -1,16 +1,16 @@
 const router = require("express").Router();
 const { protect, asyncHandler } = require("../middleware/auth");
-const { findZonesNearPoint }    = require("../services/geoService");
+const { findZonesNearPoint } = require("../services/geoService");
 const { checkDedup, setDedup, getCachedZones, setCachedZones, getDwellStart, setDwellStart } = require("../services/redisService");
-const { sendPushNotification }  = require("../services/notificationService");
+const { sendPushNotification } = require("../services/notificationService");
 
 // POST /api/location/ping
 router.post("/ping", protect, asyncHandler(async (req, res) => {
   const { lat, lng, zoneId, enteredZone } = req.body;
-  const userId   = req.user._id;
+  const userId = req.user._id;
   const fcmToken = req.user.fcmToken;
-  const lang     = req.user.language || "hi";
-  const results  = [];
+  const lang = req.user.language || "hi";
+  const results = [];
 
   // Direct zone entry from OS geofencing
   if (zoneId && enteredZone) {
@@ -19,11 +19,20 @@ router.post("/ping", protect, asyncHandler(async (req, res) => {
     if (zone && zone.project) {
       const duped = await checkDedup(userId, zoneId);
       if (!duped) {
-        const r = await sendPushNotification({ userId, fcmToken, lang, project: zone.project, zone, location: { lat, lng } });
-        if (r.success) await setDedup(userId, zoneId);
-        results.push({ zoneId, status: r.success ? "notified" : r.reason });
+        // Try FCM if token exists
+        if (fcmToken) {
+          const r = await sendPushNotification({ userId, fcmToken, lang, project: zone.project, zone, location: { lat, lng } });
+          if (r.success) await setDedup(userId, zoneId);
+          results.push({ zoneId, status: r.success ? "notified" : r.reason, project: zone.project });
+        } else {
+          // No FCM token (browser demo) — still log + mark as notified
+          const NotificationLog = require("../models/NotificationLog");
+          await NotificationLog.create({ user: userId, zone: zone._id, project: zone.project._id, status: "sent", channel: "browser", location: { lat, lng } });
+          await setDedup(userId, zoneId);
+          results.push({ zoneId, status: "notified", project: zone.project });
+        }
       } else {
-        results.push({ zoneId, status: "deduped" });
+        results.push({ zoneId, status: "deduped", project: zone.project });
       }
     }
     return res.json({ success: true, notifications: results });

@@ -49,18 +49,23 @@ export default function CitizenDashboard() {
     setSimulating(zone._id)
     try {
       const [lng, lat] = zone.centerPoint.coordinates
-      const { data } = await API.post('/api/location/ping', { lat, lng, zoneId: zone._id, enteredZone: true })
+      const { data } = await API.post('/api/location/ping', {
+        lat, lng, zoneId: zone._id, enteredZone: true
+      })
       const result = data.notifications?.[0]
+
       if (result?.status === 'notified') {
-        toast.success(`Notification sent for ${zone.name}!`)
-        showBrowserNotif(zone)
+        toast.success(`Notification fired for ${zone.name}!`)
+        showBrowserNotif(zone)  // always show browser notif
       } else if (result?.status === 'deduped') {
-        toast(`Already notified (24hr dedup active) — showing demo anyway`, { icon: 'ℹ️' })
-        showBrowserNotif(zone)
+        toast(`Already notified today — showing demo notification anyway`, { icon: 'ℹ️' })
+        showBrowserNotif(zone)  // show demo anyway
       } else if (result?.status?.includes('dwell')) {
-        toast(`Dwell timer started — in real app you'd wait 5 min`, { icon: '⏱' })
+        toast(`Dwell timer started — in real app wait 5 min inside zone`, { icon: '⏱' })
       } else {
-        toast(`Status: ${result?.status || JSON.stringify(data)}`, { icon: '❓' })
+        // Fallback — show browser notif anyway for demo
+        toast.success(`Zone entry simulated — showing demo notification`)
+        showBrowserNotif(zone)
       }
       await fetchData()
     } catch (err) {
