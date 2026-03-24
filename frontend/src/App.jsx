@@ -17,14 +17,20 @@ import Analytics from './pages/admin/Analytics'
 import Users from './pages/admin/Users'
 
 const AdminRoute = ({ children }) => {
-  const { isAuth, user } = useAuth()
+  const { isAuth, user, isLoading } = useAuth() // 👈 Added isLoading
+  
+  if (isLoading) return null // 👈 Wait for Context to load before kicking user!
+  
   if (!isAuth) return <Navigate to="/admin/login" replace />
   if (user?.role !== 'admin') return <Navigate to="/citizen" replace />
   return children
 }
 
 const CitizenRoute = ({ children }) => {
-  const { isAuth } = useAuth()
+  const { isAuth, isLoading } = useAuth() // 👈 Added isLoading
+  
+  if (isLoading) return null // 👈 Wait for Context to load
+  
   return isAuth ? children : <Navigate to="/login" replace />
 }
 
@@ -67,4 +73,3 @@ export default function App() {
     </ThemeProvider>
   )
 }
-  

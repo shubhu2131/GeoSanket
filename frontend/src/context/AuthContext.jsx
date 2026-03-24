@@ -5,10 +5,13 @@ const AuthContext = createContext()
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   const [token, setToken] = useState(localStorage.getItem('gs_token'))
+  const [isLoading, setIsLoading] = useState(true) // 👈 1. Added loading state
 
   useEffect(() => {
     const stored = localStorage.getItem('gs_user')
     if (stored) setUser(JSON.parse(stored))
+    
+    setIsLoading(false) // 👈 2. Tell React we are done checking local storage
   }, [])
 
   const loginUser = (userData, tok) => {
@@ -26,7 +29,8 @@ export const AuthProvider = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ user, token, loginUser, logout, isAuth: !!token }}>
+    // 👈 3. Passed isLoading in the value below
+    <AuthContext.Provider value={{ user, token, loginUser, logout, isAuth: !!token, isLoading }}>
       {children}
     </AuthContext.Provider>
   )
