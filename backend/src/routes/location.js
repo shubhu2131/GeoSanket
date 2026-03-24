@@ -73,4 +73,97 @@ router.get("/nearby", protect, asyncHandler(async (req, res) => {
   res.json({ success: true, zones });
 }));
 
+// POST /api/v1/fence-check — the public API for govt app integration
+router.post("/v1/fence-check", asyncHandler(async (req, res) => {
+  const { lat, lng, deviceId, appId, lang = "hi" } = req.body;
+
+  if (!lat || !lng || !deviceId) {
+    return res.status(400).json({ success: false, error: "lat, lng and deviceId are required" });
+  }
+
+  // Find or create anonymous user by deviceId
+  const User = require("../models/User");
+  let user = await User.findOne({ deviceId });
+  if (!user) {
+    user = await User.create({ deviceId, isAnonymous: true, language: lang });
+  }
+
+  // Find matching zones
+  const Zone = require("../models/Zone");
+  const zones = await Zone.find({
+    isActive: true,
+    centerPoint: {
+      $near: {
+        $geometry: { type: "Point", coordinates: [parseFloat(lng), parseFloat(lat)] },
+        $maxDistance: 1000
+      }
+    }
+  }).populate("project");
+
+  if (zones.length === 0) {
+    return res.json({ success: true, shouldNotify: false, message: "No zones nearby" });
+  }
+
+  const notifications = [];
+
+  for (const zone of zones) {
+    if (!zone.project) continue;
+
+    // Dedup check
+    const duped = await checkDedup(user._id, zone._id);
+    if (duped) continue;
+
+    // Dwell check
+    const dwellStart = await getDwellStart(user._id, zone._id);
+    if (!dwellStart) {
+      await setDwellStart(user._id, zone._id);
+      continue;
+    }
+    const dwellSecs = (Date.now() - parseInt(dwellStart)) / 1000;
+    if (dwellSecs < zone.dwellTimeSeconds) continue;
+
+    // Log it
+    const NotificationLog = require("../models/NotificationLog");
+    await NotificationLog.create({
+      user: user._id, zone: zone._id,
+      project: zone.project._id,
+      status: "sent", channel: appId || "api",
+      location: { lat, lng }
+    });
+    await setDedup(user._id, zone._id);
+
+    const title = zone.project.notificationTitle?.[lang]
+      || zone.project.notificationTitle?.en
+      || zone.project.name?.en;
+    const body = zone.project.notificationBody?.[lang]
+      || zone.project.notificationBody?.en
+      || `${zone.project.name?.en} · ₹${((zone.project.budget?.sanctioned || 0) / 1e7).toFixed(0)}Cr · ${zone.project.completionPercentage}% complete`;
+
+    notifications.push({
+      zoneId: zone._id,
+      zoneName: zone.name,
+      title,
+      body,
+      projectId: zone.project._id,
+      projectName: zone.project.name?.en,
+      budget: zone.project.budget,
+      completionPercentage: zone.project.completionPercentage,
+      leader: zone.project.leader,
+      scheme: zone.project.scheme,
+      department: zone.project.department,
+    });
+  }
+
+  if (notifications.length === 0) {
+    return res.json({ success: true, shouldNotify: false, message: "Dedup active or dwell not reached" });
+  }
+
+  res.json({
+    success: true,
+    shouldNotify: true,
+    count: notifications.length,
+    notifications
+  });
+}));
+
 module.exports = router;
