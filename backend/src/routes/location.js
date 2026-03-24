@@ -58,9 +58,18 @@ router.post("/ping", protect, asyncHandler(async (req, res) => {
     const dwellSecs = (Date.now() - parseInt(dwellStart)) / 1000;
     if (dwellSecs < zone.dwellTimeSeconds) { results.push({ zoneId: zone._id, status: `dwelling_${Math.floor(dwellSecs)}s` }); continue; }
 
-    const r = await sendPushNotification({ userId, fcmToken, lang, project: zone.project, zone, location: { lat, lng } });
-    if (r.success) await setDedup(userId, zone._id);
-    results.push({ zoneId: zone._id, status: r.success ? "notified" : r.reason });
+    if (fcmToken) {
+      // Mobile app — send real FCM push
+      const r = await sendPushNotification({ userId, fcmToken, lang, project: zone.project, zone, location: { lat, lng } });
+      if (r.success) await setDedup(userId, zone._id);
+      results.push({ zoneId: zone._id, status: r.success ? "notified" : r.reason, project: zone.project });
+    } else {
+      // Browser demo (no FCM token) — log + mark notified so frontend can show browser notification
+      const NotificationLog = require("../models/NotificationLog");
+      await NotificationLog.create({ user: userId, zone: zone._id, project: zone.project._id, status: "sent", channel: "browser-gps", location: { lat, lng } });
+      await setDedup(userId, zone._id);
+      results.push({ zoneId: zone._id, status: "notified", project: zone.project });
+    }
   }
 
   res.json({ success: true, notifications: results, zonesChecked: zones.length });
