@@ -3,7 +3,6 @@ import { Toaster } from 'react-hot-toast'
 import { AuthProvider, useAuth } from './context/AuthContext'
 import { SocketProvider } from './context/SocketContext'
 import { ThemeProvider } from './context/ThemeContext'
-
 import Landing from './pages/Landing'
 import CitizenLogin from './pages/CitizenLogin'
 import CitizenDashboard from './pages/CitizenDashboard'
@@ -17,20 +16,16 @@ import Analytics from './pages/admin/Analytics'
 import Users from './pages/admin/Users'
 
 const AdminRoute = ({ children }) => {
-  const { isAuth, user, isLoading } = useAuth() // 👈 Added isLoading
-  
-  if (isLoading) return null // 👈 Wait for Context to load before kicking user!
-  
+  const { isAuth, user, isLoading } = useAuth()
+  if (isLoading) return <div style={{ minHeight:'100vh', background:'#05050f', display:'flex', alignItems:'center', justifyContent:'center', color:'#64748b', fontSize:14 }}>Loading...</div>
   if (!isAuth) return <Navigate to="/admin/login" replace />
   if (user?.role !== 'admin') return <Navigate to="/citizen" replace />
   return children
 }
 
 const CitizenRoute = ({ children }) => {
-  const { isAuth, isLoading } = useAuth() // 👈 Added isLoading
-  
-  if (isLoading) return null // 👈 Wait for Context to load
-  
+  const { isAuth, isLoading } = useAuth()
+  if (isLoading) return <div style={{ minHeight:'100vh', background:'#f8f9fa', display:'flex', alignItems:'center', justifyContent:'center', color:'#6b7280', fontSize:14 }}>Loading...</div>
   return isAuth ? children : <Navigate to="/login" replace />
 }
 
@@ -39,25 +34,13 @@ export default function App() {
     <ThemeProvider>
       <AuthProvider>
         <BrowserRouter>
-          <Toaster
-            position="top-right"
-            toastOptions={{
-              style: { background: '#0d0d1e', color: '#fff', border: '1px solid #1a1a2e', fontSize: 13, fontFamily: "'DM Sans', sans-serif" },
-              success: { iconTheme: { primary: '#22c55e', secondary: '#0d0d1e' } },
-              error: { iconTheme: { primary: '#ef4444', secondary: '#0d0d1e' } },
-              duration: 4000,
-            }}
-          />
+          <Toaster position="top-right" toastOptions={{ style:{ background:'#0d0d1e', color:'#fff', border:'1px solid #1a1a2e', fontSize:13 }, success:{ iconTheme:{ primary:'#22c55e', secondary:'#0d0d1e' } }, error:{ iconTheme:{ primary:'#ef4444', secondary:'#0d0d1e' } }, duration:4000 }} />
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/login" element={<CitizenLogin />} />
             <Route path="/citizen" element={<CitizenRoute><CitizenDashboard /></CitizenRoute>} />
             <Route path="/admin/login" element={<Login />} />
-            <Route path="/admin" element={
-              <AdminRoute>
-                <SocketProvider><Layout /></SocketProvider>
-              </AdminRoute>
-            }>
+            <Route path="/admin" element={<AdminRoute><SocketProvider><Layout /></SocketProvider></AdminRoute>}>
               <Route index element={<Navigate to="/admin/dashboard" replace />} />
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="map" element={<MapView />} />
