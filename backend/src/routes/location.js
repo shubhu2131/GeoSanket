@@ -50,7 +50,7 @@ router.post("/ping", protect, asyncHandler(async (req, res) => {
   for (const zone of zones) {
     if (!zone.project) continue;
     const duped = await checkDedup(userId, zone._id);
-    if (duped) { results.push({ zoneId: zone._id, status: "deduped" }); continue; }
+    if (duped) { results.push({ zoneId: zone._id, status: "deduped", message: "Already notified in last 24hrs" }); continue; }
 
     // Dwell time check
     const dwellStart = await getDwellStart(userId, zone._id);
