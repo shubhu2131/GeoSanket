@@ -6,6 +6,7 @@ import { ThemeProvider } from './context/ThemeContext'
 import Landing from './pages/Landing'
 import CitizenLogin from './pages/CitizenLogin'
 import CitizenDashboard from './pages/CitizenDashboard'
+import APITestPage from './pages/APITestPage'
 import Login from './pages/admin/Login'
 import Layout from './components/Layout'
 import Dashboard from './pages/admin/Dashboard'
@@ -38,6 +39,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/login" element={<CitizenLogin />} />
+            <Route path="/api-test" element={<APITestPage />} />
             <Route path="/citizen" element={<CitizenRoute><CitizenDashboard /></CitizenRoute>} />
             <Route path="/admin/login" element={<Login />} />
             <Route path="/admin" element={<AdminRoute><SocketProvider><Layout /></SocketProvider></AdminRoute>}>
