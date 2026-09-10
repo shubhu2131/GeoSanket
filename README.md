@@ -1,7 +1,7 @@
 # 🇮🇳 GeoSanket — Hyper-Local Civic Awareness Engine
 
 > Automatically delivers verified government project information to citizens  
-> the moment they physically enter a geo-fenced zone — zero effort required.
+> that the moment they physically enter a geo-fenced zone — zero effort required.
 
 🔗 **Live Demo:** https://geosanket.vercel.app  
 🛠️ **API:** https://geosanket-production.up.railway.app
