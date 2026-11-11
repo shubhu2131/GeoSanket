@@ -59,10 +59,7 @@ export default function MapView() {
       <div style={{ height: 'calc(100vh - 210px)', borderRadius: 12, overflow: 'hidden', border: `1px solid ${t.border}` }}>
         <MapContainer center={[28.6139, 77.2090]} zoom={11} style={{ height: '100%', width: '100%' }}>
           <TileLayer
-            url={t.isDark
-              ? "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-              : "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
-            }
+            url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
             attribution='&copy; <a href="https://carto.com/">CARTO</a>'
           />
           {zones.map(zone => {
