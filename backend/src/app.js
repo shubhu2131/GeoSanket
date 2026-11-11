@@ -20,6 +20,7 @@ app.use("/api/location",      require("./routes/location"));
 app.use("/api/notifications", require("./routes/notifications"));
 app.use("/api/analytics",     require("./routes/analytics"));
 app.use("/api/admin",         require("./routes/admin"));
+app.use("/api/ai",            require("./routes/ai"));
 
 app.get("/", (req, res) => res.json({ status: "GeoSanket API running ✅" }));
 

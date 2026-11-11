@@ -2,11 +2,17 @@ import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 import { getProjects, createProject, deleteProject } from '../../api'
 import { useTheme } from '../../context/ThemeContext'
+import AIExtractBox from '../../components/AIExtractBox'
 
 export default function Projects() {
   const [projects, setProjects] = useState([])
   const [showForm, setShowForm] = useState(false)
-  const [form, setForm] = useState({ nameEn: '', nameHi: '', descEn: '', projectType: 'hospital', leaderName: '', leaderDesignation: '', budgetSanctioned: '', budgetSpent: '', completionPercentage: 0, status: 'in_progress', scheme: '', department: '', notifTitleEn: '', notifBodyEn: '' })
+  const [form, setForm] = useState({ 
+    nameEn: '', nameHi: '', descEn: '', projectType: 'hospital', 
+    leaderName: '', leaderDesignation: '', budgetSanctioned: '', 
+    budgetSpent: '', completionPercentage: 0, status: 'in_progress', 
+    scheme: '', department: '', notifTitleEn: '', notifBodyEn: '' 
+  })
   const { t } = useTheme()
 
   useEffect(() => {
@@ -73,6 +79,15 @@ export default function Projects() {
         <div style={{ background: t.cardBg, border: `1px solid ${t.isDark ? 'rgba(124,58,237,.3)' : '#ddd6fe'}`, borderRadius: 12, padding: 20, marginBottom: 20 }}>
           <h3 style={{ fontWeight: 700, fontSize: 15, marginBottom: 18, color: t.purple }}>Add New Project</h3>
           <form onSubmit={handleCreate}>
+            
+            {/* AI EXTRACT BOX ADDED HERE */}
+            <AIExtractBox onApply={(extractedData) => {
+              setForm(prev => ({
+                ...prev,
+                ...extractedData
+              }));
+            }} />
+
             <div className="proj-form-grid">
               <div><label style={lbl}>Name (English)</label><input style={inp} value={form.nameEn} onChange={e => setForm({ ...form, nameEn: e.target.value })} placeholder="AIIMS Trauma Centre" required /></div>
               <div><label style={lbl}>Name (Hindi)</label><input style={inp} value={form.nameHi} onChange={e => setForm({ ...form, nameHi: e.target.value })} placeholder="एम्स ट्रॉमा सेंटर" /></div>

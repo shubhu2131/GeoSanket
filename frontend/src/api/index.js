@@ -33,3 +33,4 @@ export const getTimeline = (days = 7) => API.get(`/api/analytics/timeline?days=$
 export const getByZone = () => API.get('/api/analytics/by-zone')
 export const getUsers = () => API.get('/api/admin/users')
 export const manualNotify = (userId, zoneId) => API.post('/api/admin/notify/manual', { userId, zoneId })
+export const extractProject = (text) => API.post('/api/ai/extract', { text })

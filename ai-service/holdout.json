@@ -1,0 +1,18 @@
+[
+ {"text":"Work on the Lajpat Nagar Skywalk, a pedestrian bridge worth ₹ 46 Cr, is nearly three-quarters done, officials said on Tuesday. 74% of the structure is ready, while the remaining finishing is scheduled for December.",
+  "gold":{"name":"Lajpat Nagar Skywalk","projectType":"bridge","budgetSanctioned":460000000,"completionPercentage":74,"status":"in_progress"}},
+ {"text":"Speaking at the event, Education Minister Atishi Marlena noted that 40% of students were from low-income families. The new Dilshad Garden Government College building cost Rs 19.5 crore and was handed over this week.",
+  "gold":{"name":"Dilshad Garden Government College","projectType":"college","budgetSanctioned":195000000,"leaderName":"Atishi Marlena","status":"completed"}},
+ {"text":"Jal Shakti Minister C R Patil visited the Najafgarh Drain Revival site. The Rs. 600 crore initiative, funded through the Namami Gange programme, has seen Rs 150 crore released so far and is 25 percent complete.",
+  "gold":{"name":"Najafgarh Drain","projectType":"water","budgetSanctioned":6000000000,"budgetSpent":1500000000,"completionPercentage":25,"scheme":"Namami Gange"}},
+ {"text":"Finance Minister Nirmala Sitharaman allocated 3,200 crore rupees for the Kalindi Kunj Metro Corridor. The corridor will be built by DMRC and is expected to be completed by 2028.",
+  "gold":{"name":"Kalindi Kunj Metro Corridor","projectType":"road","budgetSanctioned":32000000000,"leaderName":"Nirmala Sitharaman","department":"DMRC","status":"in_progress"}},
+ {"text":"A new 500-bed Burari Hospital was opened to the public last week. Health Minister Saurabh Bharadwaj said the hospital, constructed by PWD at a total cost of Rs. 1,200 crore, has treated 11,000 patients.",
+  "gold":{"name":"Burari Hospital","projectType":"hospital","budgetSanctioned":12000000000,"leaderName":"Saurabh Bharadwaj","department":"PWD","status":"completed"}},
+ {"text":"The Yamuna Riverfront Park project is 12% complete. Sh. Rekha Gupta, Chief Minister of Delhi, reviewed Rs 85 crore worth of tenders issued by the Delhi Development Authority.",
+  "gold":{"name":"Yamuna Riverfront Park","projectType":"park","budgetSanctioned":850000000,"completionPercentage":12,"leaderName":"Rekha Gupta","status":"in_progress"}},
+ {"text":"Inaugurating the Anand Vihar Railway Station redevelopment, Railway Minister Ashwini Vaishnaw said the Rs 2,400 crore terminal is complete and will serve 3 lakh passengers daily under the Amrit Bharat Station scheme.",
+  "gold":{"name":"Anand Vihar Railway Station","projectType":"other","budgetSanctioned":24000000000,"leaderName":"Ashwini Vaishnaw","scheme":"Amrit Bharat Station","status":"completed"}},
+ {"text":"MLA Sanjeev Jha said the Burari Flyover, approved at ₹72 crore, will help reduce traffic by 30%. Land acquisition is pending and the project has not started.",
+  "gold":{"name":"Burari Flyover","projectType":"bridge","budgetSanctioned":720000000,"leaderName":"Sanjeev Jha","status":"planned"}}
+]
