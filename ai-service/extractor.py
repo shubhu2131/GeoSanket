@@ -14,18 +14,20 @@ from typing import Optional
 UNITS = {
     "crore": 1e7, "cr": 1e7, "lakh": 1e5, "lac": 1e5,
     "million": 1e6, "mn": 1e6, "billion": 1e9, "bn": 1e9, "thousand": 1e3,
+    # Hindi / Marathi units
+    "करोड़": 1e7, "करोड": 1e7, "लाख": 1e5, "हज़ार": 1e3, "हजार": 1e3,
 }
 
 MONEY = re.compile(
-    r"(?:₹|Rs\.?|INR)\s*(\d[\d,]*(?:\.\d+)?)\s*(crore|cr|lakh|lac|million|mn|billion|bn|thousand)?\b"
-    r"|(\d[\d,]*(?:\.\d+)?)\s*(crore|lakh)s?\s*(?:rupees)?",
+    r"(?:₹|Rs\.?|INR|रु\.?|रुपये)\s*(\d[\d,]*(?:\.\d+)?)\s*(crore|cr|lakh|lac|million|mn|billion|bn|thousand|करोड़|करोड|लाख|हज़ार|हजार)?\b"
+    r"|(\d[\d,]*(?:\.\d+)?)\s*(crore|lakh|करोड़|करोड|लाख)s?\s*(?:rupees|रुपये)?",
     re.I,
 )
-SPENT_KW = ("spent", "incurred", "utilised", "utilized", "expenditure", "disbursed", "released")
-SANC_KW = ("sanctioned", "allocated", "approved", "estimated", "budget", "cost", "outlay", "worth", "investment")
+SPENT_KW = ("spent", "incurred", "utilised", "utilized", "expenditure", "disbursed", "released", "खर्च", "व्यय")
+SANC_KW = ("sanctioned", "allocated", "approved", "estimated", "budget", "cost", "outlay", "worth", "investment", "स्वीकृत", "लागत", "बजट", "राशि")
 
-PERCENT = re.compile(r"(\d{1,3}(?:\.\d+)?)\s*(?:%|per\s?cent|percent)", re.I)
-PROGRESS_KW = ("complete", "completion", "done", "progress", "finished", "work", "construction", "physical")
+PERCENT = re.compile(r"(\d{1,3}(?:\.\d+)?)\s*(?:%|per\s?cent|percent|प्रतिशत|फीसदी)", re.I)
+PROGRESS_KW = ("complete", "completion", "done", "progress", "finished", "work", "construction", "physical", "पूर्ण", "पूरा", "प्रगति", "निर्माण")
 
 TITLES = (
     r"(?:Deputy Chief Minister|Chief Minister|Prime Minister|Union Minister|Minister of State|"
@@ -69,9 +71,9 @@ TYPE_KW = [
     ("water", ("water", "pipeline", "sewage", "sewer", "stp", "dam", "canal", "drain")),
 ]
 
-IN_PROGRESS_RX = re.compile(r"under construction|in progress|ongoing|will be completed|to be completed|expected to be (?:completed|ready)|being (?:built|constructed)", re.I)
-PLANNED_RX = re.compile(r"\bproposed\b|\bplanned\b|to be built|will be built|\bapproved for\b", re.I)
-COMPLETED_RX = re.compile(r"inaugurat|\bcompleted\b|\bopened\b|dedicated to the nation|commissioned|handed over", re.I)
+IN_PROGRESS_RX = re.compile(r"under construction|in progress|ongoing|will be completed|to be completed|expected to be (?:completed|ready)|being (?:built|constructed)|निर्माणाधीन|प्रगति पर|पूरा होगा", re.I)
+PLANNED_RX = re.compile(r"\bproposed\b|\bplanned\b|to be built|will be built|\bapproved for\b|प्रस्तावित|योजना", re.I)
+COMPLETED_RX = re.compile(r"inaugurat|\bcompleted\b|\bopened\b|dedicated to the nation|commissioned|handed over|उद्घाटन|पूर्ण|पूरा हुआ|लोकार्पित", re.I)
 YEAR_RX = re.compile(r"\b(?:in|by|since|during)\s+((?:19|20)\d{2})\b")
 
 
@@ -228,6 +230,7 @@ def extract(text: str) -> dict:
     cr = (sanctioned or 0) / 1e7
     body_parts = []
     if sanctioned: body_parts.append(f"₹{cr:.0f} Cr")
+    # Add a check so it doesn't break if only Hindi text is provided
     if pct is not None: body_parts.append(f"{pct:.0f}% complete")
     if leader: body_parts.append(leader)
     form_fields = {

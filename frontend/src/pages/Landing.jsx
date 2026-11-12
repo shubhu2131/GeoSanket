@@ -47,7 +47,7 @@ export default function Landing() {
       <section style={{ background: t.surface, padding: '88px 32px 72px', textAlign: 'center', borderBottom: `1px solid ${t.border}` }}>
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: t.isDark ? 'rgba(124,58,237,.15)' : '#f3f0ff', color: t.purple, padding: '5px 16px', borderRadius: 20, fontSize: 12, fontWeight: 600, marginBottom: 28, border: `1px solid ${t.isDark ? 'rgba(124,58,237,.3)' : '#ddd6fe'}`, animation: 'fadeUp .5s ease both' }}>
           <span style={{ width: 6, height: 6, borderRadius: '50%', background: t.purple, display: 'inline-block', animation: 'blink 2s infinite' }}></span>
-          India Innovates 2026 · Municipal Corporation of Delhi
+          GeoSanket is LIVE
         </div>
 
         <h1 style={{ fontSize: 'clamp(36px,5.5vw,68px)', fontWeight: 800, lineHeight: 1.05, letterSpacing: -2, marginBottom: 24, animation: 'fadeUp .5s .1s ease both', color: t.text }}>
@@ -187,9 +187,9 @@ export default function Landing() {
         <div style={{ fontWeight: 800, fontSize: 20, color: '#fff', marginBottom: 8 }}>
           Geo<span style={{ color: '#a855f7' }}>Sanket</span>
         </div>
-        <div style={{ fontSize: 13, color: '#6b7280', marginBottom: 20 }}>Hyper-Local Civic Awareness Engine · India Innovates 2026 · MCD</div>
+        <div style={{ fontSize: 13, color: '#6b7280', marginBottom: 20 }}>Hyper-Local Civic Awareness Engine</div>
         <div style={{ display: 'flex', gap: 10, justifyContent: 'center', flexWrap: 'wrap' }}>
-          {['Team GeoSanket', 'India Innovates 2026', 'Municipal Corporation of Delhi'].map(tag => (
+          {['Team GeoSanket'].map(tag => (
             <span key={tag} style={{ fontSize: 11, color: '#6b7280', border: '1px solid #374151', padding: '4px 12px', borderRadius: 20 }}>{tag}</span>
           ))}
         </div>

@@ -1,22 +1,136 @@
 [
- {"text":"The Delhi Government yesterday inaugurated the AIIMS Trauma Centre Expansion at a sanctioned cost of Rs. 85 crore, of which Rs. 72 crore has been spent. Delhi Chief Minister Arvind Kejriwal said 95% of the work is complete. The project was executed under the PMAY Health scheme by the Department of Health & Family Welfare.",
-  "gold":{"name":"AIIMS Trauma Centre Expansion","projectType":"hospital","budgetSanctioned":850000000,"budgetSpent":720000000,"completionPercentage":95,"leaderName":"Arvind Kejriwal","scheme":"PMAY Health","department":"Department of Health & Family Welfare"}},
- {"text":"Prime Minister Narendra Modi dedicated the Signature Bridge over the Yamuna to the nation. The cable-stayed bridge was built by the Delhi Tourism and Transportation Development Corporation at an estimated cost of ₹1,594 crore. Construction is 100% complete.",
-  "gold":{"name":"Signature Bridge","projectType":"bridge","budgetSanctioned":15940000000,"completionPercentage":100,"leaderName":"Narendra Modi"}},
- {"text":"Union Minister Nitin Gadkari reviewed the ongoing Dwarka Expressway project today. The highway, being developed by NHAI with an outlay of Rs 9,000 crore, is 78 per cent complete under the Bharatmala scheme. The Ministry of Road Transport and Highways expects completion next year.",
-  "gold":{"name":"Dwarka Expressway","projectType":"road","budgetSanctioned":90000000000,"completionPercentage":78,"leaderName":"Nitin Gadkari","scheme":"Bharatmala","department":"Ministry of Road Transport and Highways","status":"in_progress"}},
- {"text":"Dr. Harsh Vardhan, Union Minister, laid the foundation stone of the Rohini Medical College, a project proposed with a budget of Rs. 420 crore under the Ayushman Bharat programme. The Department of Health and Family Welfare will oversee construction.",
-  "gold":{"name":"Rohini Medical College","projectType":"hospital","budgetSanctioned":4200000000,"leaderName":"Dr. Harsh Vardhan","scheme":"Ayushman Bharat","department":"Department of Health and Family Welfare","status":"planned"}},
- {"text":"Mayor Shelly Oberoi announced that the Okhla Water Treatment Plant upgrade, sanctioned at Rs. 130 crore, is 60% complete. Delhi Jal Board has already spent Rs. 70 crore on the work under the AMRUT mission.",
-  "gold":{"name":"Okhla Water Treatment Plant","projectType":"water","budgetSanctioned":1300000000,"budgetSpent":700000000,"completionPercentage":60,"leaderName":"Shelly Oberoi","scheme":"AMRUT","status":"in_progress"}},
- {"text":"Chief Minister Atishi inaugurated the Government Sarvodaya School in Shahdara. The new campus, built at a cost of Rs 58 crore by the Public Works Department under the Samagra Shiksha scheme, was completed in 2024.",
-  "gold":{"name":"Government Sarvodaya School","projectType":"college","budgetSanctioned":580000000,"leaderName":"Atishi","scheme":"Samagra Shiksha","department":"Public Works Department","status":"completed"}},
- {"text":"The Central Park renovation at Connaught Place has reached 45% progress. Commissioner Ashwani Kumar said the Rs 22 crore project, funded by NDMC under the Smart Cities Mission, will be completed by 2026.",
-  "gold":{"name":"Central Park","projectType":"park","budgetSanctioned":220000000,"completionPercentage":45,"leaderName":"Ashwani Kumar","scheme":"Smart Cities Mission","status":"in_progress"}},
- {"text":"Delhi Metro's new Majlis Park Station was commissioned by DMRC. Rs. 310 crore was spent on the station and its flyover access. Minister Manohar Lal Khattar said the work is fully complete.",
-  "gold":{"name":"Majlis Park Station","projectType":"bridge","budgetSpent":3100000000,"completionPercentage":100,"leaderName":"Manohar Lal Khattar","department":"DMRC","status":"completed"}},
- {"text":"Lieutenant Governor Vinai Kumar Saxena opened the Barapullah Flyover Extension, a Rs. 285 crore project of the Public Works Department. Works worth Rs 260 crore were utilised till March; 92% physical progress was recorded.",
-  "gold":{"name":"Barapullah Flyover Extension","projectType":"bridge","budgetSanctioned":2850000000,"budgetSpent":2600000000,"completionPercentage":92,"leaderName":"Vinai Kumar Saxena","department":"Public Works Department"}},
- {"text":"Sagarmala scheme funds of Rs 40 crore have been approved for the Kandla Terminal modernisation. Shri Mansukh Mandaviya, Union Minister, said the project is under construction and 30% of the work is done. The Ministry of Ports will monitor progress.",
-  "gold":{"name":"Kandla Terminal","projectType":"other","budgetSanctioned":400000000,"completionPercentage":30,"leaderName":"Mansukh Mandaviya","scheme":"Sagarmala","department":"Ministry of Ports","status":"in_progress"}}
+  {
+    "text": "The Delhi Government yesterday inaugurated the AIIMS Trauma Centre Expansion at a sanctioned cost of Rs. 85 crore, of which Rs. 72 crore has been spent. Delhi Chief Minister Arvind Kejriwal said 95% of the work is complete. The project was executed under the PMAY Health scheme by the Department of Health & Family Welfare.",
+    "gold": {
+      "name": "AIIMS Trauma Centre Expansion",
+      "projectType": "hospital",
+      "budgetSanctioned": 850000000,
+      "budgetSpent": 720000000,
+      "completionPercentage": 95,
+      "leaderName": "Arvind Kejriwal",
+      "scheme": "PMAY Health",
+      "department": "Department of Health & Family Welfare"
+    }
+  },
+  {
+    "text": "Prime Minister Narendra Modi dedicated the Signature Bridge over the Yamuna to the nation. The cable-stayed bridge was built by the Delhi Tourism and Transportation Development Corporation at an estimated cost of ₹1,594 crore. Construction is 100% complete.",
+    "gold": {
+      "name": "Signature Bridge",
+      "projectType": "bridge",
+      "budgetSanctioned": 15940000000,
+      "completionPercentage": 100,
+      "leaderName": "Narendra Modi"
+    }
+  },
+  {
+    "text": "Union Minister Nitin Gadkari reviewed the ongoing Dwarka Expressway project today. The highway, being developed by NHAI with an outlay of Rs 9,000 crore, is 78 per cent complete under the Bharatmala scheme. The Ministry of Road Transport and Highways expects completion next year.",
+    "gold": {
+      "name": "Dwarka Expressway",
+      "projectType": "road",
+      "budgetSanctioned": 90000000000,
+      "completionPercentage": 78,
+      "leaderName": "Nitin Gadkari",
+      "scheme": "Bharatmala",
+      "department": "Ministry of Road Transport and Highways",
+      "status": "in_progress"
+    }
+  },
+  {
+    "text": "Dr. Harsh Vardhan, Union Minister, laid the foundation stone of the Rohini Medical College, a project proposed with a budget of Rs. 420 crore under the Ayushman Bharat programme. The Department of Health and Family Welfare will oversee construction.",
+    "gold": {
+      "name": "Rohini Medical College",
+      "projectType": "hospital",
+      "budgetSanctioned": 4200000000,
+      "leaderName": "Dr. Harsh Vardhan",
+      "scheme": "Ayushman Bharat",
+      "department": "Department of Health and Family Welfare",
+      "status": "planned"
+    }
+  },
+  {
+    "text": "Mayor Shelly Oberoi announced that the Okhla Water Treatment Plant upgrade, sanctioned at Rs. 130 crore, is 60% complete. Delhi Jal Board has already spent Rs. 70 crore on the work under the AMRUT mission.",
+    "gold": {
+      "name": "Okhla Water Treatment Plant",
+      "projectType": "water",
+      "budgetSanctioned": 1300000000,
+      "budgetSpent": 700000000,
+      "completionPercentage": 60,
+      "leaderName": "Shelly Oberoi",
+      "scheme": "AMRUT",
+      "status": "in_progress"
+    }
+  },
+  {
+    "text": "Chief Minister Atishi inaugurated the Government Sarvodaya School in Shahdara. The new campus, built at a cost of Rs 58 crore by the Public Works Department under the Samagra Shiksha scheme, was completed in 2024.",
+    "gold": {
+      "name": "Government Sarvodaya School",
+      "projectType": "college",
+      "budgetSanctioned": 580000000,
+      "leaderName": "Atishi",
+      "scheme": "Samagra Shiksha",
+      "department": "Public Works Department",
+      "status": "completed"
+    }
+  },
+  {
+    "text": "The Central Park renovation at Connaught Place has reached 45% progress. Commissioner Ashwani Kumar said the Rs 22 crore project, funded by NDMC under the Smart Cities Mission, will be completed by 2026.",
+    "gold": {
+      "name": "Central Park",
+      "projectType": "park",
+      "budgetSanctioned": 220000000,
+      "completionPercentage": 45,
+      "leaderName": "Ashwani Kumar",
+      "scheme": "Smart Cities Mission",
+      "status": "in_progress"
+    }
+  },
+  {
+    "text": "Delhi Metro's new Majlis Park Station was commissioned by DMRC. Rs. 310 crore was spent on the station and its flyover access. Minister Manohar Lal Khattar said the work is fully complete.",
+    "gold": {
+      "name": "Majlis Park Station",
+      "projectType": "bridge",
+      "budgetSpent": 3100000000,
+      "completionPercentage": 100,
+      "leaderName": "Manohar Lal Khattar",
+      "department": "DMRC",
+      "status": "completed"
+    }
+  },
+  {
+    "text": "Lieutenant Governor Vinai Kumar Saxena opened the Barapullah Flyover Extension, a Rs. 285 crore project of the Public Works Department. Works worth Rs 260 crore were utilised till March; 92% physical progress was recorded.",
+    "gold": {
+      "name": "Barapullah Flyover Extension",
+      "projectType": "bridge",
+      "budgetSanctioned": 2850000000,
+      "budgetSpent": 2600000000,
+      "completionPercentage": 92,
+      "leaderName": "Vinai Kumar Saxena",
+      "department": "Public Works Department"
+    }
+  },
+  {
+    "text": "Sagarmala scheme funds of Rs 40 crore have been approved for the Kandla Terminal modernisation. Shri Mansukh Mandaviya, Union Minister, said the project is under construction and 30% of the work is done. The Ministry of Ports will monitor progress.",
+    "gold": {
+      "name": "Kandla Terminal",
+      "projectType": "other",
+      "budgetSanctioned": 400000000,
+      "completionPercentage": 30,
+      "leaderName": "Mansukh Mandaviya",
+      "scheme": "Sagarmala",
+      "department": "Ministry of Ports",
+      "status": "in_progress"
+    }
+  },
+  {
+    "text": "दिल्ली सरकार ने एम्स ट्रॉमा सेंटर के विस्तार का उद्घाटन किया। इस परियोजना की स्वीकृत लागत 85 करोड़ रुपये है, जिसमें से 72 करोड़ रुपये खर्च हो चुके हैं। मुख्यमंत्री अरविंद केजरीवाल ने कहा कि 95 प्रतिशत काम पूरा हो चुका है।",
+    "gold": {
+      "name": "एम्स ट्रॉमा सेंटर",
+      "projectType": "hospital",
+      "budgetSanctioned": 850000000,
+      "budgetSpent": 720000000,
+      "completionPercentage": 95,
+      "leaderName": "अरविंद केजरीवाल",
+      "status": "completed"
+    }
+  }
 ]
