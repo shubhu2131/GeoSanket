@@ -63,16 +63,16 @@ NAME_RX = re.compile(
 )
 
 TYPE_KW = [
-    ("hospital", ("hospital", "trauma", "medical", "clinic", "aiims", "dispensary")),
-    ("bridge", ("bridge", "flyover", "underpass", "overbridge")),
-    ("road", ("road", "highway", "expressway", "corridor")),
-    ("college", ("school", "college", "university", "campus", "institute")),
-    ("park", ("park", "garden", "stadium", "playground")),
-    ("water", ("water", "pipeline", "sewage", "sewer", "stp", "dam", "canal", "drain")),
+    ("hospital", ("hospital", "trauma", "medical", "clinic", "aiims", "dispensary", "अस्पताल", "ट्रॉमा", "चिकित्सा")),
+    ("bridge", ("bridge", "flyover", "underpass", "overbridge", "पुल", "फ्लाईओवर")),
+    ("road", ("road", "highway", "expressway", "corridor", "सड़क", "राजमार्ग")),
+    ("college", ("school", "college", "university", "campus", "institute", "स्कूल", "कॉलेज", "विश्वविद्यालय")),
+    ("park", ("park", "garden", "stadium", "playground", "पार्क", "बगीचा", "स्टेडियम")),
+    ("water", ("water", "pipeline", "sewage", "sewer", "stp", "dam", "canal", "drain", "पानी", "नहर", "बांध")),
 ]
 
 IN_PROGRESS_RX = re.compile(r"under construction|in progress|ongoing|will be completed|to be completed|expected to be (?:completed|ready)|being (?:built|constructed)|निर्माणाधीन|प्रगति पर|पूरा होगा", re.I)
-PLANNED_RX = re.compile(r"\bproposed\b|\bplanned\b|to be built|will be built|\bapproved for\b|प्रस्तावित|योजना", re.I)
+PLANNED_RX = re.compile(r"\bproposed\b|\bplanned\b|to be built|will be built|\bapproved for\b|not started|pending|प्रस्तावित|योजना", re.I)
 COMPLETED_RX = re.compile(r"inaugurat|\bcompleted\b|\bopened\b|dedicated to the nation|commissioned|handed over|उद्घाटन|पूर्ण|पूरा हुआ|लोकार्पित", re.I)
 YEAR_RX = re.compile(r"\b(?:in|by|since|during)\s+((?:19|20)\d{2})\b")
 
